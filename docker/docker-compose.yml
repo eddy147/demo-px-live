@@ -1,0 +1,17 @@
+version: '3'
+
+services:
+  mydb:
+    image: postgres:14.1-alpine
+    environment:
+      - POSTGRES_DB=kanban_dev
+      - POSTGRES_USER=root
+      - POSTGRES_PASSWORD=root
+    volumes:
+      - db-data:/var/lib/postgresql/data
+    ports:
+      - 5432:5432
+ 
+volumes:
+  db-data:
+    driver: local
