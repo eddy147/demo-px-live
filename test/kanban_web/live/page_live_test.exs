@@ -16,6 +16,20 @@ defmodule KanbanWeb.PageLiveTest do
     assert {:error, {:redirect, %{to: "/error"}}} = live(conn, "/boards/123")
   end
 
+  test "adds new card", %{conn: conn} do
+    %{id: board_id} = create_board()
+    %{id: column_id} = create_column(board_id)
+
+    {:ok, page_live, _disconnected_html} = live(conn, "/boards/#{board_id}")
+
+    assert page_live
+      |> element("button[phx-value-column=#{column_id}]")
+      |> render_click() =~ "Something new"
+
+    IO.inspect(Kanban.Repo.all(Kanban.Card))
+    assert [%{content: "Something new"}] = Kanban.Repo.all(Kanban.Card)
+  end
+
   defp create_board() do
     %Kanban.Board{title: "A test project"}
     |> Kanban.Repo.insert!()

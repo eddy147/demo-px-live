@@ -9,13 +9,13 @@
         <h3 class="panel-title"><%= column.title %></h3>
       </div>
       <div class="panel-body">
-        <div class="column" data-column-id="{@column.id}">
+        <div class="column" data-column-id={column.id}>
         &nbsp;
         <%= for card <- column.cards do %>
-          <div data-card-id="{@card.id}" class="task alert alert-success" role="alert"><%= card.content %></div>
+          <div data-card-id={card.id} class="task alert alert-success" role="alert"><%= card.content %></div>
           <% end %>
           <div>
-            <button>Add card</button>
+            <button phx-click="add_card" phx-value-column={column.id}>Add card</button>
           </div>
         </div>
       </div>
