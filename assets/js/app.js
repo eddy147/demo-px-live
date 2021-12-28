@@ -43,3 +43,4 @@ liveSocket.connect()
 // >> liveSocket.disableLatencySim()
 window.liveSocket = liveSocket
 
+dragula(Array.from(document.querySelectorAll('.column')));

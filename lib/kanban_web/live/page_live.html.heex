@@ -12,7 +12,7 @@
         <div class="column" data-column-id="{@column.id}">
         &nbsp;
         <%= for card <- column.cards do %>
-          <div data-card-id="{@card.id}" class="task alert alert-success" role="alert">{@card.content}</div>
+          <div data-card-id="{@card.id}" class="task alert alert-success" role="alert"><%= card.content %></div>
           <% end %>
           <div>
             <button>Add card</button>
